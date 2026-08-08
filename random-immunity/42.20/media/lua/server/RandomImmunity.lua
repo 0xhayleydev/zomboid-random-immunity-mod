@@ -66,3 +66,14 @@ local function onCreatePlayer(_, player)
 end
 
 Events.OnCreatePlayer.Add(onCreatePlayer)
+
+local function onTick()
+    local players = getOnlinePlayers()
+
+    for i = 0, players:size() - 1 do
+        local player = players:get(i)
+        enforceImmunity(player)
+    end
+end
+
+Events.OnTick.Add(onTick)
