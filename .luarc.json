@@ -1,0 +1,10 @@
+{
+    "diagnostics": {
+        "globals": [
+            "CharacterStat",
+            "Events",
+            "SandboxVars",
+            "ZombRand"
+        ]
+    }
+}
