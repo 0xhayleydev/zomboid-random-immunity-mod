@@ -1,0 +1,10 @@
+author=0xhayleydev
+category=features
+description=A mod which allows players to, unknowingly, spawn as an immune character.
+icon=poster.png
+id=hayleyRandomImmunity
+modversion=1.0.1
+name=Hayley's Random Immunity
+poster=poster.png
+url=https://github.com/0xhayleydev/zomboid-random-immunity-mod
+versionMin=42.20
