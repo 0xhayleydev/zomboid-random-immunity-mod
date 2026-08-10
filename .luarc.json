@@ -4,7 +4,8 @@
             "CharacterStat",
             "Events",
             "SandboxVars",
-            "ZombRand"
+            "ZombRand",
+            "getOnlinePlayers"
         ]
     }
 }

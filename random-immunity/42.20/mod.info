@@ -1,6 +1,6 @@
 name=Hayley's Random Immunity
 poster=poster.png
-id=0xhayleydevRandomImmunity
+id=hayleyRandomImmunity
 description=A mod which allows players to, unknowingly, spawn as an immune character.
 modversion=1
 category=features
