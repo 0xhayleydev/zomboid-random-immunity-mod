@@ -1,0 +1,10 @@
+VERSION = 1,
+
+option RandomImmunity.RandomImmunityChance {
+    type = double,
+    default = 0.1,
+    min = 0.0,
+    max = 100.0,
+    page = RandomImmunity_Settings,
+    translation = RandomImmunity_RandomImmunityChance,
+}
