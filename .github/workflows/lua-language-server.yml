@@ -22,6 +22,7 @@ jobs:
           ls -la "$GITHUB_WORKSPACE"
           echo "--- .luarc.json ---"
           cat "$GITHUB_WORKSPACE/.luarc.json"
+          echo "$RUNNER_TEMP/lua-language-server/bin" >> "$GITHUB_PATH"
 
       - name: Run Lua Language Server
         run: lua-language-server --check_format=pretty --check="${{ github.workspace }}" --checklevel=Hint
