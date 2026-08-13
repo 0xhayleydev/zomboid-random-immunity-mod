@@ -3,6 +3,7 @@
     "workspace": {
         "library": [
             "./umbrella/library"
-        ]
+        ],
+        "ignoreSubmodules": true
     }
 }
