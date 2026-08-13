@@ -1,12 +1,19 @@
-name: Lua Typecheck
-on: [push, pull_request]
+name: Lua Check
+
+on:
+  push:
+  pull_request:
+
 jobs:
-  luacheck:
+  lua-check:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Lua typecheck
-        uses: mrcjkb/lua-typecheck-action@v1.1.0
-        with:
-          configpath: ".luarc.json"
+
+      - name: Install Lua Language Server
+        run: sudo snap install lua-language-server --classic
+
+      - name: Run Lua Language Server
+        run: lua-language-server --check_format=pretty --check="${{ github.workspace }}" --checklevel=Hint
