@@ -16,7 +16,11 @@ jobs:
         run: |
           wget -q https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-linux-x64.tar.gz
           tar -xzf lua-language-server-3.18.2-linux-x64.tar.gz
-          echo "$PWD/bin" >> "$GITHUB_PATH"
+          echo "Workspace: $GITHUB_WORKSPACE"
+          echo "Current directory: $(pwd)"
+          ls -la "$GITHUB_WORKSPACE"
+          echo "--- .luarc.json ---"
+          cat "$GITHUB_WORKSPACE/.luarc.json"
 
       - name: Run Lua Language Server
         run: lua-language-server --check_format=pretty --check="${{ github.workspace }}" --checklevel=Hint
