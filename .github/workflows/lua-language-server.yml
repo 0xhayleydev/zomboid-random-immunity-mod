@@ -12,6 +12,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Verify library
+        run: |
+          echo "Library file count:"
+          find "$GITHUB_WORKSPACE/umbrella/library" -type f | wc -l
+
+          echo "Events definition:"
+          grep -R -n "Events = {}" "$GITHUB_WORKSPACE/umbrella/library"
+
+          echo "ZombRand definition:"
+          grep -R -n "ZombRand" "$GITHUB_WORKSPACE/umbrella/library" | head -10
+
       - name: Install Lua Language Server
         run: |
           mkdir -p "$RUNNER_TEMP/lua-language-server"
