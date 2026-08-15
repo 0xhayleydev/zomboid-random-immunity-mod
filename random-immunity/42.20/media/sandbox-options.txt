@@ -8,3 +8,12 @@ option RandomImmunity.RandomImmunityChance {
     page = RandomImmunity_Settings,
     translation = RandomImmunity_RandomImmunityChance,
 }
+
+option RandomImmunity.ResetID {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 2147483647,
+    page = RandomImmunity_Settings,
+    translation = RandomImmunity_ResetID,
+}

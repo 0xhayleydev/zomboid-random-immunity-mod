@@ -5,7 +5,7 @@ local function enforceImmunity(player)
         return
     end
 
-    local bodyDamage = player:getBodyDamage()
+    local bodyDamage = player:getBodyDamageRemote()
     local bodyParts = bodyDamage:getBodyParts()
 
     bodyDamage:setInfected(false)
@@ -32,16 +32,25 @@ end
 
 Events.OnPlayerDeath.Add(enforceImmunity)
 
+---@param player IsoGameCharacter
+---@param damageType "POISON" | "HUNGRY" | "SICK" | "BLEEDING" | "THIRST" | "HEAVYLOAD" | "INFECTION" | "LOWWEIGHT" | "FALLDOWN" | "WEAPONHIT" | "CARHITDAMAGE" | "CARCRASHDAMAGE" | "FIRE"
+---@param _ number
 local function onPlayerGetDamage(player, damageType, _)
+    if player:isZombie() then
+        return
+    end
+
     if damageType ~= "INFECTION" then
         return
     end
 
-    enforceImmunity(player)
+    enforceImmunity(player:getUsingPlayer())
 end
 
 Events.OnPlayerGetDamage.Add(onPlayerGetDamage)
 
+---@param _ number
+---@param player IsoPlayer
 local function onCreatePlayer(_, player)
     local data = player:getModData()
 
@@ -67,7 +76,8 @@ end
 
 Events.OnCreatePlayer.Add(onCreatePlayer)
 
-local function onTick()
+---@param _ number
+local function onTick(_)
     local players = getOnlinePlayers()
 
     for i = 0, players:size() - 1 do
