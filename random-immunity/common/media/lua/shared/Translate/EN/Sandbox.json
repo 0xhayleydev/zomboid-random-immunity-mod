@@ -1,5 +1,8 @@
 {
     "Sandbox_RandomImmunity_Settings": "Random Immunity",
     "Sandbox_RandomImmunity_RandomImmunityChance": "Immunity Chance",
-    "Sandbox_RandomImmunity_ResetID": "Reset ID"
+    "Sandbox_RandomImmunity_RandomImmunityChance_tooltip": "The % chance for a character to be immune.",
+    "Sandbox_RandomImmunity_ResetID": "Reset ID",
+    "Sandbox_RandomImmunity_FakeInfection": "Uses Fake Infection",
+    "Sandbox_RandomImmunity_FakeInfection_tooltip": "When enabled, characters will get a Fake Infection instead, which emulates getting infected by the Knox virus."
 }

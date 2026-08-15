@@ -1,3 +1,4 @@
+---@param player IsoPlayer
 local function enforceImmunity(player)
     local playerData = player:getModData()
 
@@ -5,11 +6,18 @@ local function enforceImmunity(player)
         return
     end
 
-    local bodyDamage = player:getBodyDamageRemote()
+    local bodyDamage = player:getBodyDamage()
     local bodyParts = bodyDamage:getBodyParts()
 
+    if bodyDamage:IsInfected() == false then
+        return
+    end
+
+    local useFakeInfection = SandboxVars.RandomImmunity.FakeInfection
+
     bodyDamage:setInfected(false)
-    bodyDamage:setIsFakeInfected(true)
+    local isBodyDamageFakeInfected = bodyDamage:IsFakeInfected()
+    bodyDamage:setIsFakeInfected(isBodyDamageFakeInfected or useFakeInfection)
     bodyDamage:setInfectionMortalityDuration(-1)
     bodyDamage:setInfectionTime(-1)
     bodyDamage:setInfectionGrowthRate(0)
@@ -18,12 +26,10 @@ local function enforceImmunity(player)
         local bodyPart = bodyParts:get(i)
 
         if bodyPart:IsInfected() == true then
-            print(tostring(bodyPart:getType()) .. " is infected wound? " .. tostring(bodyPart:IsInfected()))
-
             bodyPart:SetInfected(false)
-            bodyPart:SetFakeInfected(true)
 
-            print(tostring(bodyPart:getType()) .. " is infected wound? " .. tostring(bodyPart:IsInfected()))
+            local isBodyPartFakeInfected = bodyPart:IsFakeInfected()
+            bodyPart:SetFakeInfected(isBodyPartFakeInfected or useFakeInfection)
         end
     end
 
@@ -32,11 +38,11 @@ end
 
 Events.OnPlayerDeath.Add(enforceImmunity)
 
----@param player IsoGameCharacter
+---@param character IsoGameCharacter
 ---@param damageType "POISON" | "HUNGRY" | "SICK" | "BLEEDING" | "THIRST" | "HEAVYLOAD" | "INFECTION" | "LOWWEIGHT" | "FALLDOWN" | "WEAPONHIT" | "CARHITDAMAGE" | "CARCRASHDAMAGE" | "FIRE"
 ---@param _ number
-local function onPlayerGetDamage(player, damageType, _)
-    if player:isZombie() then
+local function onPlayerGetDamage(character, damageType, _)
+    if character:isZombie() then
         return
     end
 
@@ -44,7 +50,7 @@ local function onPlayerGetDamage(player, damageType, _)
         return
     end
 
-    enforceImmunity(player:getUsingPlayer())
+    enforceImmunity(character:getUsingPlayer())
 end
 
 Events.OnPlayerGetDamage.Add(onPlayerGetDamage)

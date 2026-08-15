@@ -1,6 +1,8 @@
 import re
 from typing import Callable
 
+LINE_PREFIX = "description="
+
 class RegexReplace:
     def __init__(self, match: str, result: str, func: Callable[[str], str]|None = None) -> None:
         self._match = match
@@ -49,7 +51,7 @@ lines: list[str] = []
 with open(r"README.md", "r") as readme:
     readme_lines = readme.read().splitlines()
     for line in readme_lines:
-        lines.append(recurse_replacement(line))
+        lines.append(f"{LINE_PREFIX}{recurse_replacement(line)}")
 
 with open(r"README.bbc", "w+") as readme:
     readme.write("\n".join(lines))

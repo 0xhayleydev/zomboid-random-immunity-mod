@@ -9,6 +9,13 @@ option RandomImmunity.RandomImmunityChance {
     translation = RandomImmunity_RandomImmunityChance,
 }
 
+option RandomImmunity.FakeInfection {
+    type = boolean,
+    default = true,
+    page = RandomImmunity_Settings,
+    translation = RandomImmunity_FakeInfection,
+}
+
 option RandomImmunity.ResetID {
     type = integer,
     default = 0,
