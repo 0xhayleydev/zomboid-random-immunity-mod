@@ -1,11 +1,9 @@
 {
-    "diagnostics": {
-        "globals": [
-            "CharacterStat",
-            "Events",
-            "SandboxVars",
-            "ZombRand",
-            "getOnlinePlayers"
-        ]
+    "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+    "workspace": {
+        "library": [
+            "${workspaceFolder}/umbrella/library"
+        ],
+        "ignoreSubmodules": true
     }
 }
