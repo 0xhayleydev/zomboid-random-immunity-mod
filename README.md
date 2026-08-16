@@ -8,8 +8,9 @@ This is a mod which will give your character a small chance of being immune.
 This is not a trait, or knowable state - your character will not know they are immune.
 
 ### Sandbox Options
-- Immunity Chance (Min: 0.0%, Max: 100.0%, Default: 0.1%)
-- ResetID: 0 (Min: 0, Max: 2147483647, Default: 0)
+- Immunity Chance (Min: 0.0%, Max: 100.0%, Default: 0.1%) - the chance a character will be immune
+- ResetID (Min: 0, Max: 2147483647, Default: 0) - allows you to reroll the immunities
+- Use Fake Infection (Default: True) - will give players a Fake Infection instead of a zombie Infection
 
 ## Have an idea, and know how to code?
 [![Contribute on GitHub](images/github-contribute.png)](https://github.com/0xhayleydev/zomboid-random-immunity-mod)
