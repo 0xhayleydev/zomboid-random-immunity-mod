@@ -30,4 +30,4 @@ Whilst 100% of the code was written by myself, during the creation of the mod, C
 ## Redistribution
 Please do not reshare unmodified versions of this mod on the Steam Workhop.
 Any redistribution, of modifications or otherwise, should credit the original mod.
-Updating this mod to later, or earlier, versions is allowed, but those projects.
+Porting this mod to later, or earlier, versions is allowed, but those new mods must link to this original mod, and have the source code available via GitHub/GitLab etc.

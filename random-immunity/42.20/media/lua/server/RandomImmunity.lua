@@ -1,12 +1,16 @@
----@param player IsoPlayer
-local function enforceImmunity(player)
-    local playerData = player:getModData()
+---@param character IsoGameCharacter
+local function enforceImmunity(character)
+    if character == nil then
+        return
+    end
+
+    local playerData = character:getModData()
 
     if playerData.HasRandomImmunity ~= true then
         return
     end
 
-    local bodyDamage = player:getBodyDamage()
+    local bodyDamage = character:getBodyDamage()
     local bodyParts = bodyDamage:getBodyParts()
 
     if bodyDamage:IsInfected() == false then
@@ -33,7 +37,7 @@ local function enforceImmunity(player)
         end
     end
 
-    player:getStats():set(CharacterStat.ZOMBIE_INFECTION, 0)
+    character:getStats():set(CharacterStat.ZOMBIE_INFECTION, 0)
 end
 
 Events.OnPlayerDeath.Add(enforceImmunity)
